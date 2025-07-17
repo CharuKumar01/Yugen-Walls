@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.example.yugenwalls"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.yugenwalls"
@@ -30,10 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    dataBinding{
+        enable = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -42,7 +46,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }

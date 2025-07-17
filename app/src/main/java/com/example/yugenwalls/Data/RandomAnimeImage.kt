@@ -1,6 +1,6 @@
 package com.example.yugenwalls.Data
 
-data class RandomAnime(
+data class RandomAnimeImage(
     val id: Int,
     val url: String,
     val rating: String,

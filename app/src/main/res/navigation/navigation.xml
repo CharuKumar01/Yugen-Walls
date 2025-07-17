@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/navigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/explore">
 
+    <fragment
+        android:id="@+id/explore"
+        android:name="com.example.yugenwalls.Fragments.Explore"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore">
+        <action
+            android:id="@+id/action_explore_to_liked"
+            app:destination="@id/liked" />
+    </fragment>
+    <fragment
+        android:id="@+id/liked"
+        android:name="com.example.yugenwalls.Fragments.Liked"
+        android:label="Liked"
+        tools:layout="@layout/fragment_liked" />
 </navigation>
