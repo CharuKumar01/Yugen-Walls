@@ -6,6 +6,7 @@
         android:id="@+id/cv_animeImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true">
 
@@ -17,7 +18,6 @@
                 android:id="@+id/iv_animeImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
                 android:maxHeight="500dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

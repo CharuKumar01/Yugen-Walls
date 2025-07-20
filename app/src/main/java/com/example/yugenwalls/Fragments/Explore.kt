@@ -40,6 +40,6 @@ class Explore : Fragment() {
         mainViewModel.animeImageList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-        mainViewModel.getRandomImages()
+//        mainViewModel.getRandomImages()
     }
 }
