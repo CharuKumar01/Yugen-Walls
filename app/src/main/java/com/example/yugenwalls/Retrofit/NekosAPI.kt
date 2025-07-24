@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface NekosAPI {
-    @GET("random")
+    @GET("random?rating=safe&limit=30")
     suspend fun getRandomAnime() : Response<List<RandomAnimeImage>>
 }

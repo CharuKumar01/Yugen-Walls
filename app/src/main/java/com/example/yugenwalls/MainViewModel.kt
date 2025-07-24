@@ -22,6 +22,9 @@ class MainViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading : MutableLiveData<Boolean> = _isLoading
 
+    private val _errorMessage = MutableLiveData<String?>()
+    val errorMessage : MutableLiveData<String?> = _errorMessage
+
     init {
         getRandomImages()
     }
@@ -32,13 +35,13 @@ class MainViewModel @Inject constructor(
             _isLoading.postValue(true)
             val response = nekosAPI.getRandomAnime()
             if (response.isSuccessful) {
-                val dataList = response.body()?.filter {
-                    it.rating == "safe"
-                }
+                val dataList = response.body()
+                val errorMessage = response.errorBody()?.string()
                 withContext(Dispatchers.Main) {
                     Log.d("charu", "$dataList")
                     Log.d("charu", "${dataList?.get(0)?.url}, rating: ${dataList?.get(0)?.rating}")
                     _animeImageList.value = dataList!!
+                    _errorMessage.value = errorMessage
                     _isLoading.value = false
                 }
             }

@@ -1,6 +1,8 @@
 package com.example.yugenwalls.Fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +31,7 @@ class Explore : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = ImageAdapter()
+        adapter = ImageAdapter(requireContext())
         val manager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         bind.apply {
             rvAnimeImages.adapter = adapter
@@ -40,6 +42,11 @@ class Explore : Fragment() {
         mainViewModel.animeImageList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-//        mainViewModel.getRandomImages()
+
+        mainViewModel.errorMessage.observe(viewLifecycleOwner) {
+            if (it != null) {
+                Log.d("charu", "$it")
+            }
+        }
     }
 }
